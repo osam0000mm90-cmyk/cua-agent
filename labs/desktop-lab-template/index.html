@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Desktop Control Console</title>
+    <link rel="stylesheet" href="./app.css" />
+    <script>
+      window.__desktopLabReady = true;
+      window.__desktopLabState = {
+        status: "ready",
+        hint: "Use the Telegram bot or runner API to start a desktop-control task.",
+      };
+    </script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card">
+        <p class="eyebrow">Desktop agent workspace</p>
+        <h1>Desktop Control Console</h1>
+        <p data-testid="desktop-console-status">Ready for a desktop-control run.</p>
+        <p class="muted">
+          This page stays intentionally light. The real control surface is the runner's desktop
+          and terminal tool layer.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

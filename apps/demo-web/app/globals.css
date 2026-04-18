@@ -1,0 +1,658 @@
+:root {
+  color-scheme: dark;
+  --page-bg: #050816;
+  --frame-bg: rgba(10, 14, 26, 0.88);
+  --panel-bg: rgba(13, 18, 32, 0.78);
+  --panel-strong: rgba(16, 23, 42, 0.92);
+  --panel-border: rgba(148, 163, 184, 0.14);
+  --panel-border-strong: rgba(148, 163, 184, 0.24);
+  --text-primary: #edf4ff;
+  --text-secondary: #afbdd0;
+  --text-muted: #7d8aa0;
+  --brand: #8ab4ff;
+  --brand-soft: rgba(138, 180, 255, 0.18);
+  --ok: #7fe0b2;
+  --warn: #ffd27d;
+  --error: #ff9491;
+  --shadow: 0 30px 70px rgba(0, 0, 0, 0.42);
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(72, 108, 255, 0.18), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(30, 41, 59, 0.5), transparent 20%),
+    linear-gradient(180deg, #030712 0%, #09101c 48%, #050816 100%);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: transparent;
+  font-family: Inter, "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+code,
+pre,
+.readoutChip,
+.stageUrl,
+.bubbleMeta,
+.budgetValue {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.consoleShell {
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.consoleFrame {
+  width: min(1500px, 100%);
+  margin: 0 auto;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-xl);
+  background: var(--frame-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.consoleTopbar,
+.chatPanel,
+.controlsPanel,
+.runSummaryCard,
+.statusPanel,
+.previewCard,
+.advancedPanel,
+.primaryButton,
+.secondaryButton,
+.segmentButton,
+.bubble,
+.composer textarea,
+.readoutChip,
+.statusPill,
+.fieldInfoButton,
+.fieldPopover {
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+}
+
+.consoleTopbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 18px;
+  background: var(--panel-bg);
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.brandCopy {
+  min-width: 0;
+}
+
+.brandCopy h1,
+.panelHeader h2,
+.runSummaryCard h3 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.brandCopy p,
+.panelHint,
+.runSummaryText,
+.emptyState span,
+.composerHint,
+.advancedHint,
+.capabilityCard p,
+.policyBanner,
+.stageSupportCopy,
+.stageNow {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.statusPill,
+.readoutChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--panel-strong);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.statusPill.ok {
+  color: var(--ok);
+}
+
+.statusPill.error {
+  color: var(--error);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.workspaceGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.9fr);
+  gap: 18px;
+  margin-top: 18px;
+  align-items: start;
+}
+
+.mainColumn,
+.sideColumn {
+  display: grid;
+  gap: 18px;
+}
+
+.chatPanel,
+.controlsPanel,
+.runSummaryCard,
+.statusPanel,
+.previewCard,
+.advancedPanel {
+  background: var(--panel-bg);
+}
+
+.chatPanel {
+  padding: 18px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.chatHeader h2,
+.compactHeader h2,
+.runSummaryCard h3 {
+  font-size: 1.18rem;
+}
+
+.panelHint {
+  max-width: 32rem;
+  text-align: right;
+  font-size: 0.92rem;
+}
+
+.chatTranscript {
+  display: grid;
+  gap: 12px;
+  max-height: min(58vh, 640px);
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.emptyState {
+  display: grid;
+  gap: 6px;
+  place-items: start;
+  padding: 22px;
+  border: 1px dashed var(--panel-border-strong);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.compactEmpty {
+  min-height: 140px;
+  align-content: center;
+}
+
+.bubble {
+  padding: 14px 16px;
+  background: var(--panel-strong);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+}
+
+.userBubble {
+  margin-left: auto;
+  max-width: min(92%, 54rem);
+  border-top-right-radius: 8px;
+  background: rgba(74, 144, 255, 0.18);
+}
+
+.assistantBubble {
+  margin-right: auto;
+  max-width: min(92%, 54rem);
+  border-top-left-radius: 8px;
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.bubbleMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bubble p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.55;
+}
+
+.composer {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.composer textarea,
+.toolbarField select {
+  width: 100%;
+  background: var(--panel-strong);
+  color: var(--text-primary);
+}
+
+.composer textarea {
+  min-height: 132px;
+  padding: 14px;
+  resize: vertical;
+}
+
+.composerFooter,
+.statusMetaRow,
+.previewMeta,
+.stageToolbarActions,
+.capabilityChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.composerFooter {
+  align-items: center;
+}
+
+.composerHint {
+  font-size: 0.88rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.segmentButton,
+.fieldInfoButton {
+  min-height: 42px;
+  padding: 0 14px;
+  background: var(--panel-strong);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.primaryButton {
+  background: var(--brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+.primaryButton:hover:not(:disabled),
+.secondaryButton:hover:not(:disabled),
+.segmentButton:hover:not(:disabled),
+.fieldInfoButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled,
+.segmentButton:disabled,
+.fieldInfoButton:disabled,
+.composer textarea:disabled,
+.toolbarField select:disabled,
+input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.controlsPanel,
+.runSummaryCard,
+.statusPanel,
+.previewCard,
+.advancedPanel {
+  padding: 16px;
+}
+
+.runSummaryCard {
+  display: grid;
+  gap: 8px;
+}
+
+.runSummaryText,
+.stageNow {
+  font-size: 0.94rem;
+}
+
+.statusPanel {
+  display: grid;
+  gap: 12px;
+}
+
+.stageChrome {
+  padding: 10px 12px;
+  background: var(--panel-strong);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+}
+
+.stageUrl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.previewCard {
+  display: grid;
+  gap: 12px;
+}
+
+.previewImage {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.previewMeta {
+  justify-content: flex-start;
+}
+
+.controlsGrid,
+.advancedContent,
+.capabilityList {
+  display: grid;
+  gap: 14px;
+}
+
+.compactGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.railField {
+  display: grid;
+  gap: 8px;
+}
+
+.railField label,
+.fieldLabel,
+.budgetValue,
+.advancedLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.segmentControl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.segmentButton.isActive {
+  background: var(--brand);
+  color: #fff;
+}
+
+.budgetControl {
+  display: grid;
+  gap: 6px;
+}
+
+.budgetControl input[type="range"] {
+  width: 100%;
+  accent-color: var(--brand);
+}
+
+.verificationToggle {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 12px 12px 10px;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.verificationToggle span {
+  display: grid;
+  gap: 3px;
+}
+
+.verificationToggle strong {
+  font-size: 0.94rem;
+}
+
+.verificationToggle small {
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.fieldInfo {
+  position: relative;
+  display: inline-flex;
+}
+
+.fieldInfoButton {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.fieldPopover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+  width: min(280px, 70vw);
+  padding: 10px 12px;
+  background: rgba(15, 23, 42, 0.96);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+}
+
+.fieldInfo:hover .fieldPopover,
+.fieldInfo:focus-within .fieldPopover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.advancedPanel {
+  display: grid;
+  gap: 10px;
+}
+
+.advancedPanel > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.advancedPanel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.advancedSummaryCopy {
+  display: grid;
+  gap: 4px;
+}
+
+.advancedHint {
+  font-size: 0.88rem;
+}
+
+.capabilityList {
+  grid-template-columns: 1fr;
+}
+
+.capabilityCard {
+  padding: 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.capabilityCard strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.policyBanner {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(138, 180, 255, 0.08);
+}
+
+.stageToolbarActions {
+  justify-content: flex-start;
+}
+
+.suggestionRail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 2px;
+}
+
+.suggestionChip {
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
+}
+
+.suggestionChip:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(138, 180, 255, 0.35);
+  background: rgba(138, 180, 255, 0.12);
+}
+
+@media (max-width: 1120px) {
+  .workspaceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .panelHint {
+    text-align: left;
+  }
+
+  .suggestionRail {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 760px) {
+  .consoleShell {
+    padding: 12px;
+  }
+
+  .consoleFrame {
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .consoleTopbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .compactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .composerFooter,
+  .previewMeta,
+  .statusMetaRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bubble,
+  .userBubble,
+  .assistantBubble {
+    max-width: 100%;
+  }
+}

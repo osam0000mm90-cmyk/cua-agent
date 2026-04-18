@@ -1,0 +1,36 @@
+import { existsSync } from "node:fs";
+
+import { describe, expect, it } from "vitest";
+
+import { scenarioManifestSchema } from "@cua-sample/replay-schema";
+
+import { listScenarios } from "../src/index.js";
+
+describe("scenario registry", () => {
+  it("loads only the prompt-driven scenarios that are still enabled", () => {
+    const scenarios = listScenarios();
+
+    expect(scenarios).toHaveLength(4);
+    expect(new Set(scenarios.map((scenario) => scenario.labId))).toEqual(
+      new Set(["kanban", "paint", "booking", "desktop"]),
+    );
+
+    for (const scenario of scenarios) {
+      expect(() => scenarioManifestSchema.parse(scenario)).not.toThrow();
+      expect(existsSync(scenario.workspaceTemplatePath)).toBe(true);
+    }
+  });
+
+  it("uses the expected default mode for each lab", () => {
+    const defaultModeByLab = new Map([
+      ["kanban", "code"],
+      ["paint", "code"],
+      ["booking", "code"],
+      ["desktop", "code"],
+    ]);
+
+    for (const scenario of listScenarios()) {
+      expect(scenario.defaultMode).toBe(defaultModeByLab.get(scenario.labId));
+    }
+  });
+});
