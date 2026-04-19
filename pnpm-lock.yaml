@@ -93,6 +93,12 @@ importers:
         specifier: ^1.55.0
         version: 1.58.2
 
+  apps/telegram-bot:
+    dependencies:
+      '@cua-sample/replay-schema':
+        specifier: workspace:*
+        version: link:../../packages/replay-schema
+
   packages/browser-runtime:
     dependencies:
       '@cua-sample/replay-schema':
